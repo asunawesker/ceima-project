@@ -1,0 +1,87 @@
+{% load bootstrap5 %}
+{% load bootstrap_icons %}
+{% load static %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CEIMA</title>
+</head>
+
+<style>
+    .square {
+        background-color: #79986E;
+        border-radius: 20%;
+        padding: 5px;
+    }
+</style>
+
+<body style="background-color:#F3F3F3">    
+    <nav class="navbar navbar-expand-sm" style="background-color:#79986E">
+        <div class="container-fluid">	    
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <img width="150" style="padding-left: 30px" src="{% static "img/Logo_CEIMA_transparent.png" %}" alt="Logo CEIMA" /> 
+                    </li>
+                </ul>
+            </div>
+                <ul class="d-flex ms-auto order-5" style="list-style: none;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" style="color:white; font-size:26px; padding-right: 30px">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" style="color:white; font-size:26px; padding-right: 30px">Perfil</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="row d-flex justify-content-center" style="padding: 250px 75px;">
+        <div class="card column" style="background: #FFFFFF; box-shadow: 30px 13px 54px rgba(0, 0, 0, 0.16); width: 18rem; margin-right: 40px; margin-left: 40px; border-radius: 5px;">
+            <div class="card-body" style="text-align:center;">
+                <div class="height: 50px; width: 50px;">
+                    {% bs_icon 'person' size='3em' color='white' extra_classes="square" %}                    
+                </div>
+                <br>
+                <a class="card-title text-center stretched-link" style="text-decoration: none; color: black;">ESTUDIANTES</a>
+            </div>
+        </div>
+        <div class="card column" style="background: #FFFFFF; box-shadow: 30px 13px 54px rgba(0, 0, 0, 0.16); width: 18rem; margin-right: 40px; margin-left: 40px; border-radius: 5px;">
+            <div class="card-body" style="text-align:center;">
+                <div class="height: 50px; width: 50px; color: #79986E;">
+                    {% bs_icon 'people-fill' size='3em' color='white' extra_classes="square" %}                    
+                </div>
+                <br>
+                <a class="card-title text-center stretched-link" style="text-decoration: none; color: black">GRUPOS</a>
+            </div>
+        </div>
+        <div class="card column" style="background: #FFFFFF; box-shadow: 30px 13px 54px rgba(0, 0, 0, 0.16); width: 18rem; margin-right: 40px; margin-left: 40px; border-radius: 5px;">
+            <div class="card-body" style="text-align:center;">
+                <div class="height: 50px; width: 50px; color: #79986E;">
+                    {% bs_icon 'journal-plus' size='3em' color='white' extra_classes="square" %}                    
+                </div>
+                <br>
+                <a class="card-title text-center stretched-link" style="text-decoration: none; color: black">SUBIR CALIFICACIONES</a>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+    <footer class="text-center text-lg-start bg-light text-muted" style="position:absolute; bottom:0; width:100%;">      
+        <div class="text-center p-4" style="background-color: white">
+        © Copyright 2022
+        <p class="text-reset">Cento Educativo México Americano</p>
+        </div>
+    </footer>
+</body>
+</html>

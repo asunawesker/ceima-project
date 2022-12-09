@@ -1,0 +1,89 @@
+{% load bootstrap5 %}
+{% load static %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CEIMA</title>
+</head>
+
+<body style="background-color:#F3F3F3">     
+    <nav class="navbar navbar-expand-sm" style="background-color:#79986E">
+        <div class="container-fluid">	    
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <img width="150" style="padding-left: 30px" src="{% static "img/Logo_CEIMA_transparent.png" %}" alt="Logo CEIMA" /> 
+                    </li>
+                </ul>
+            </div>
+                <ul class="d-flex ms-auto order-5" style="list-style: none;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" style="color:white; font-size:26px; padding-right: 30px">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" style="color:white; font-size:26px; padding-right: 30px">Perfil</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div style="padding: 100px 180px;">
+        <div style="padding-bottom: 35px">
+            <p><b>Nombre completo: </b>Itziar Caceres</p>    
+            <p><b>Grado: </b> Segundo</p>    
+            <p><b>Grupo: </b> B</p>
+        </div>
+           
+        <div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Materia</th>
+                        <th scope="col">Trimestre 1</th>
+                        <th scope="col">Trimestre 2</th>
+                        <th scope="col">Trimestre 3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Matemáticas 2</th>
+                        <td>10</td>
+                        <td>9</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <th>Física</th>
+                        <td>9</td>
+                        <td>9</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <th>Biología</th>
+                        <td>10</td>
+                        <td>10</td>
+                        <td>10</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div> 
+
+
+
+    <footer class="text-center text-lg-start bg-light text-muted" style="position:absolute; bottom:0; width:100%;">      
+        <div class="text-center p-4" style="background-color: white">
+        © Copyright 2022
+        <p class="text-reset">Cento Educativo México Americano</p>
+        </div>
+    </footer>
+</body>
+</html>
