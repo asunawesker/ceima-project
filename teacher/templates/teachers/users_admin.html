@@ -11,43 +11,36 @@
         <div>
             <button type="button" class="btn" style="background-color:#7B36E1; color: white;">Agregar</button>
         </div>
-
-        <div>
-            <button type="button" class="btn" style="background-color:#7B36E1; color: white;">Guardar</button>
-        </div>
     </div>
-    <div style="padding-left: 400px; margin-right: 50px;" class="input-group">
-        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-        <button type="button" class="btn btn-outline-primary">search</button>
+    <div class="col d-flex" style="padding-bottom: 35px">
+        <form method="get" >
+            <div class="row">
+                <form method="get">
+                    {{ teachers_filter.form.as_p }}
+                    <input  class="btn btn-outline-primary" type="submit" />
+                </form>
+            </div>
+            <br>
+        </form>
     </div>
     <table class="table table-hover" style="margin-top: 60px">
         <thead>
             <tr>
                 <th scope="col">Nombre completo</th>
-                <th scope="col">Cédula</th>
+                <th scope="col">Email</th>
                 <th scope="col">Modificar</th>
                 <th scope="col">Eliminar</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Hector Caceres</td>
-                <td>12345</td>
-                <td>{% bs_icon 'pencil-square' size='1em' color='black' %} </td>
-                <td>{% bs_icon 'x-square' size='1em' color='black' %} </td>
-            </tr>
-            <tr>
-                <td>Itziar Valdivia</td>
-                <td>75443</td>
-                <td>{% bs_icon 'pencil-square' size='1em' color='black' %} </td>
-                <td>{% bs_icon 'x-square' size='1em' color='black' %} </td>
-            </tr>
-            <tr>
-                <td>Marian Velga</td>
-                <td>11111</td>
-                <td>{% bs_icon 'pencil-square' size='1em' color='black' %} </td>
-                <td>{% bs_icon 'x-square' size='1em' color='black' %} </td>
-            </tr>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.get_full_name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td><button type="button" class="btn btn-outline-primary">Modificar</button></td>
+                    <td><button type="button" class="btn btn-outline-danger">Eliminar</button></td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Group(models.Model):
@@ -29,13 +30,13 @@ class Student(models.Model):
 
 class Subject(models.Model):
     subject = models.CharField(max_length=50)
-    teacher = models.CharField(max_length=80, blank=True)
+    teacher = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     students = models.ManyToManyField(Student, null=True)
 
     def __str__(self):
         return self.subject
 
-class Notes(models.Model):
+class Note(models.Model):
     student = models.ForeignKey(to=Student, on_delete=models.CASCADE)
     group = models.ForeignKey(to=Group, on_delete=models.CASCADE)
     subject = models.ForeignKey(to=Subject, on_delete=models.CASCADE)

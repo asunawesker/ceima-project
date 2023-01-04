@@ -1,136 +1,56 @@
-{% load bootstrap5 %}
+{% extends 'teachers/main.html' %}
+{% load bootstrap_icons %}
 {% load static %}
+{% block content %}
 
-{% bootstrap_css %}
-{% bootstrap_javascript %}
+<br>
 
-<!DOCTYPE html>
-<html lang="en">
+<div class="col d-flex" style="padding-bottom: 20px">
+    <h3>Lista de estudiantes en total por docente</h3>
+    <div style="position:absolute; right: 100px;">
+        <button type="button" class="btn btn-outline-success">Generar excel</button>
+    </div>
+</div>
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CEIMA</title>
-</head>
-
-<body style="background-color:#F3F3F3">    
-    <nav class="navbar navbar-expand-sm" style="background-color:#79986E">
-        <div class="container-fluid">	    
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <img width="150" style="padding-left: 30px" src="{% static "img/Logo_CEIMA_transparent.png" %}" alt="Logo CEIMA" /> 
-                    </li>
-                </ul>
+<div class="col d-flex" style="padding-bottom: 35px">
+    <form method="get" >
+        <div class="row">
+            {% for fm in subject_filter.form %}
+            <div class="col-6">
+                <label >{{fm.label}}</label>
+                {{fm}}
             </div>
-                <ul class="d-flex ms-auto order-5" style="list-style: none;">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#" style="color:white; font-size:26px; padding-right: 30px">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#" style="color:white; font-size:26px; padding-right: 30px">Perfil</a>
-                    </li>
-                </ul>
-            </div>
+            {% endfor %}
         </div>
-    </nav>
+        <br>
+        <button class="btn btn-outline-primary" type="submit">Buscar</button>
+    </form>
+</div>
 
-    <div style="padding: 20px 75px;">
-        <div class="col d-flex" style="padding-bottom: 20px">
-            <h3>Lista de estudiantes en total por docente</h3>
-            <div style="position:absolute; right: 70px;">
-                <button type="button" class="btn btn-outline-success">Generar excel</button>
-            </div>
-        </div>          
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre completo</th>
+            <th scope="col">Grupo</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+            <tr>
+                <td>{{ student.id }}</td>
+                <td>{{ student.fullname }}</td>
+                <td>{{ student.group }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<nav aria-label="Page navigation" style="padding-top: 25px">
+    <ul class="pagination justify-content-center">
+        <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+    </ul>
+</nav>
 
-        <div class="col d-flex" style="padding-bottom: 35px">     
-            <div class="dropdown">
-                <button class="btn dropdown-toggle" style="background-color:#79986E; color: white" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Grupo
-                </button>
-            </div>
-            <div style="padding-left: 400px; margin-right: 50px;" class="input-group">
-                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                <button type="button" class="btn btn-outline-primary">search</button>
-            </div>            
-        </div>  
-
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre completo</th>
-                    <th scope="col">Grupo</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Hector Ballester</td>
-                    <td>Primero A</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Itziar Caceres</td>
-                    <td>Segundo B</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Marian Valdivia</td>
-                    <td>Tercerto A</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Hector Velga</td>
-                    <td>Primero B</td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>Marc Toledano</td>
-                    <td>Segundo B</td>
-                </tr>
-                <tr>
-                    <th scope="row">6</th>
-                    <td>Josefa Maria Salinas</td>
-                    <td>Tercerto A</td>
-                </tr>
-                <tr>
-                    <th scope="row">7</th>
-                    <td>Joaquin Piqueras</td>
-                    <td>Primero B</td>
-                </tr>
-                <tr>
-                    <th scope="row">8</th>
-                    <td>Yanira Gisbert</td>
-                    <td>Segundo B</td>
-                </tr>
-                <tr>
-                    <th scope="row">9</th>
-                    <td>Hicham Sans</td>
-                    <td>Tercerto A</td>
-                </tr>
-                <tr>
-                    <th scope="row">10</th>
-                    <td>Antonio Miguel Souto</td>
-                    <td>Primero B</td>
-                </tr>
-            </tbody>
-        </table>
-        <nav aria-label="Page navigation" style="padding-top: 25px">
-            <ul class="pagination justify-content-center">
-                <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
-            </ul>
-        </nav>
-    </div>   
-
-
-    <footer class="text-center text-lg-start bg-light text-muted" style="position:absolute; bottom:0; width:100%;">      
-        <div class="text-center p-4" style="background-color: white">
-        © Copyright 2022
-        <p class="text-reset">Cento Educativo México Americano</p>
-        </div>
-    </footer>
-</body>
-</html>
+{% endblock %}

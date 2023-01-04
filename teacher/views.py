@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
-from .models import Student, Subject, Group, Notes
-from .filters import TotalStudentFilter, StudentsForGroupFilter
+from .models import Student, Subject, Group, Note
+from .filters import TotalStudentFilter, StudentsForGroupFilter, TotalStudentAdminFilter, TotalSubjectsAdminFilter, TotalUsersAdminFilter
 from .decorators import unauthenticated_user, teacher_only, admin_only
 
 TEMPLATE_DIRS = (
@@ -49,7 +50,7 @@ def homepage_admin(request):
 @login_required(login_url='index')
 @teacher_only
 def total_students(request):
-    subjects = Subject.objects.all()
+    subjects = request.user.subject_set.all()
 
     subject_filter = TotalStudentFilter(request.GET, queryset=subjects)
 
@@ -66,7 +67,7 @@ def total_students(request):
 @teacher_only
 def single_student(request, student_id):
     student = Student.objects.get(id=student_id)
-    notes = Notes.objects.filter(student_id=student_id)
+    notes = Note.objects.filter(student_id=student_id)
 
     context = {
         'student': student,
@@ -78,7 +79,13 @@ def single_student(request, student_id):
 @login_required(login_url='index')
 @teacher_only
 def total_groups(request):
-    groups = Group.objects.all()
+    groups = []
+
+    for subject in request.user.subject_set.all():
+        for student in subject.students.all():
+            groups.append(student.group)
+
+    groups = list(dict.fromkeys(groups))
 
     context = {
         'groups': groups
@@ -90,7 +97,7 @@ def total_groups(request):
 @teacher_only
 def students_for_group(request, group_id):
     group = Group.objects.get(id=group_id)
-    notes = Notes.objects.filter(group_id=group_id)
+    notes = Note.objects.filter(group_id=group_id)
 
     notes_filter = StudentsForGroupFilter(request.GET, queryset=notes)
 
@@ -112,7 +119,18 @@ def upload_grades(request):
 @login_required(login_url='index')
 @admin_only
 def total_students_admin(request):
-    return render(request, "teachers/total_students_admin.html")
+    students = Student.objects.all()
+
+    students_filter = TotalStudentAdminFilter(request.GET, queryset=students)
+
+    students = students_filter.qs
+
+    context = {
+        'students': students,
+        'subject_filter': students_filter
+    }
+
+    return render(request, "teachers/total_students_admin.html", context)
 
 @login_required(login_url='index')
 @admin_only
@@ -122,14 +140,50 @@ def school_record_admin(request):
 @login_required(login_url='index')
 @admin_only
 def total_groups_admin(request):
-    return render(request, "teachers/total_groups_admin.html")
+    groups = Group.objects.values()
+
+    context = {
+        'groups': groups
+    }
+
+    return render(request, "teachers/total_groups_admin.html", context)
 
 @login_required(login_url='index')
 @admin_only
 def users_admin(request):
-    return render(request, "teachers/users_admin.html")
+    teachers = []
+    users = User.objects.all()
+
+    teachers_filter = TotalUsersAdminFilter(request.GET, queryset=users)
+
+    users = teachers_filter.qs
+
+    for user in users:
+        if is_member(user) == True:
+            teachers.append(user)
+
+    context = {
+        'users': teachers,
+        'teachers_filter': teachers_filter
+    }
+
+    return render(request, "teachers/users_admin.html", context)
 
 @login_required(login_url='index')
 @admin_only
 def subjects_admin(request):
-    return render(request, "teachers/subjects_admin.html")
+    subjects = Subject.objects.all()
+
+    subjects_filter = TotalSubjectsAdminFilter(request.GET, queryset=subjects)
+
+    subjects = subjects_filter.qs
+
+    context = {
+        'subjects': subjects,
+        'subject_filter': subjects_filter
+    }
+
+    return render(request, "teachers/subjects_admin.html", context)
+
+def is_member(user):
+    return user.groups.filter(name='teacher').exists()
