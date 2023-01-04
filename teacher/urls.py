@@ -19,4 +19,12 @@ urlpatterns = [
     path('total_groups_admin/', views.total_groups_admin, name='total_groups_admin'),
     path('users_admin/', views.users_admin, name='users_admin'),
     path('subjects_admin/', views.subjects_admin, name='subjects_admin'),
+    path('add_group/', views.add_group, name='add_group'),
+    path('add_subject/', views.add_subject, name='add_subject'),
+    path('update_subject/<str:subject_id>/', views.update_subject, name='update_subject'),
+    path('add_user/', views.add_user, name='add_user'),
+    path('update_user/<str:teacher_id>/', views.update_user, name='update_user'),
+    path('delete_group/<str:group_id>/', views.delete_group, name='delete_group'),
+    path('delete_subject/<str:subject_id>/', views.delete_subject, name='delete_subject'),
+    path('delete_user/<str:teacher_id>/', views.delete_user, name='delete_user'),
 ]

@@ -9,7 +9,7 @@
     <div class="col d-flex" style="padding-bottom: 35px; justify-content: space-between">
         <h3>Grupos</h3>
         <div>
-            <button type="button" class="btn" style="background-color:#7B36E1; color: white;">Agregar grupo</button>
+            <a type="button" class="btn" style="background-color:#7B36E1; color: white;"  href="{% url 'add_group' %}">Agregar grupo</a>
         </div>
     </div>
 </div>
@@ -22,8 +22,14 @@
                     <h4 class="card-title">
                         {{ group.grade }} {{ group.group }}
                     </h4>
+                    <div style="float:right;">
+                        <form action="{% url 'delete_group' group.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn" style="background-color:#7B36E1; color: white;">Eliminar grupo</button>
+                         </form>
+                    </div>
+
                 </div>
-                <button type="button" class="btn" style="background-color:#7B36E1; color: white;">Eliminar grupo</button>
             </div>
         {% endfor %}
     {% endif %}

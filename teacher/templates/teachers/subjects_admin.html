@@ -8,11 +8,7 @@
 <h3 style="">Administrador de materias</h3>
 <div class="col d-flex" style="padding-bottom: 35px; margin-top:60px; justify-content: space-between">
     <div>
-        <button type="button" class="btn" style="background-color:#7B36E1; color: white;">Agregar</button>
-    </div>
-
-    <div>
-        <button type="button" class="btn" style="background-color:#7B36E1; color: white;">Guardar</button>
+        <a type="button" class="btn" style="background-color:#7B36E1; color: white;" href="{% url 'add_subject' %}">Agregar</a>
     </div>
 </div>
 <div class="col d-flex" style="padding-bottom: 35px">
@@ -45,8 +41,18 @@
                 <td>{{ subject.id }}</td>
                 <td>{{ subject.subject }}</td>
                 <td>{{ subject.teacher.get_full_name }}</td>
-                <td><button type="button" class="btn btn-outline-primary">Modificar</button></td>
-                <td><button type="button" class="btn btn-outline-danger">Eliminar</button></td>
+                <td>
+                    <form action="{% url 'update_subject' subject.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-primary">Modificar</button>
+                     </form>
+                </td>
+                <td>
+                    <form action="{% url 'delete_subject' subject.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                     </form>
+                </td>
             </tr>
         {% endfor %}
     </tbody>
