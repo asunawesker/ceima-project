@@ -40,6 +40,4 @@ class Note(models.Model):
     student = models.ForeignKey(to=Student, on_delete=models.CASCADE)
     group = models.ForeignKey(to=StudentsGroup, on_delete=models.CASCADE)
     subject = models.ForeignKey(to=Subject, on_delete=models.CASCADE)
-    first_trimester = models.IntegerField(null=True, blank=True)
-    second_trimester = models.IntegerField(null=True, blank=True)
-    third_trimester = models.IntegerField(null=True, blank=True)
+    qualification = models.IntegerField(null=True, blank=True)

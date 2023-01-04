@@ -23,11 +23,18 @@
             {% for note in notes %}
                 <tr>
                     <td>{{ note.subject.subject }}</td>
-                    <td>{{ note.qualification }}</td>
+                    <td>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Calificación" value={{ note.qualification }}>
+                          </div>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
+    <div>
+        <a type="button" class="btn" style="background-color:#7B36E1; color: white;"  href="{% url 'upload_grades' %}">Guardar</a>
+    </div>
 </div>
 
 {% endblock %}

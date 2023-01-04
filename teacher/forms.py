@@ -3,7 +3,7 @@ from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import StudentsGroup, Subject
+from .models import StudentsGroup, Subject, Note
 
 class CreateUserForm(UserCreationForm):
 	password1 = forms.CharField(
@@ -40,6 +40,16 @@ class UpdateUserForm(UserCreationForm):
 	class Meta:
 		model = User
 		fields = ['password1', 'password2']
+
+class UpdateNoteForm(UserCreationForm):
+	qualification = forms.IntegerField(
+        label="Contraseña",
+        widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Contraseña'})
+    )
+
+	class Meta:
+		model = Note
+		fields = ['qualification']
 
 class StudentsGroupForm(ModelForm):
     class Meta:

@@ -7,9 +7,6 @@
 
 <div class="col d-flex" style="padding-bottom: 20px">
     <h3>Lista de estudiantes de {{ group.grade }} {{ group.group }}</h3>
-    <div style="position:absolute; right: 70px;">
-        <button type="button" class="btn btn-outline-success">Generar excel</button>
-    </div>
 </div>
 
 <form method="get" >
@@ -30,20 +27,16 @@
     <thead>
         <tr>
             <th scope="col">Nombre completo</th>
-            <th scope="col">Trimestre 1</th>
-            <th scope="col">Trimestre 2</th>
-            <th scope="col">Trimestre 3</th>
             <th scope="col">Materia</th>
+            <th scope="col">Calificacion</th>
         </tr>
     </thead>
     <tbody>
         {% for note in notes %}
             <tr>
                 <td>{{ note.student.fullname }}</td>
-                <td>{{ note.first_trimester }}</td>
-                <td>{{ note.second_trimester }}</td>
-                <td>{{ note.third_trimester }}</td>
                 <td>{{ note.subject.subject }}</td>
+                <td>{{ note.qualification }}</td>
             </tr>
         {% endfor %}
     </tbody>

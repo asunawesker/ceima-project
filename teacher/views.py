@@ -80,6 +80,19 @@ def single_student(request, student_id):
 
 @login_required(login_url='index')
 @teacher_only
+def single_student_grade(request, student_id):
+    student = Student.objects.get(id=student_id)
+    notes = Note.objects.filter(student_id=student_id)
+
+    context = {
+        'student': student,
+        'notes': notes
+    }
+
+    return render(request, "teachers/single_student_grade.html", context)
+
+@login_required(login_url='index')
+@teacher_only
 def total_groups(request):
     groups = []
 
@@ -116,7 +129,31 @@ def students_for_group(request, group_id):
 @login_required(login_url='index')
 @teacher_only
 def upload_grades(request):
-    return render(request, "teachers/upload_grades.html")
+    subjects = request.user.subject_set.all()
+
+    subject_filter = TotalStudentFilter(request.GET, queryset=subjects)
+
+    subjects = subject_filter.qs
+
+    context = {
+        'subjects': subjects,
+        'subject_filter': subject_filter
+    }
+
+    return render(request, "teachers/upload_grades.html", context)
+
+@login_required(login_url='index')
+@teacher_only
+def upload_grade(request, student_id):
+    student = Student.objects.get(id=student_id)
+    notes = Note.objects.filter(student_id=student_id)
+
+    context = {
+        'student': student,
+        'notes': notes
+    }
+
+    return render(request, "teachers/upload_grade.html", context)
 
 @login_required(login_url='index')
 @admin_only
@@ -133,11 +170,6 @@ def total_students_admin(request):
     }
 
     return render(request, "teachers/total_students_admin.html", context)
-
-@login_required(login_url='index')
-@admin_only
-def school_record_admin(request):
-    return render(request, "teachers/school_record_admin.html")
 
 @login_required(login_url='index')
 @admin_only
