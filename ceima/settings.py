@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'bootstrap5',
     'django_bootstrap_icons',
     'teacher',
-    'administrator'
+    'administrator',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

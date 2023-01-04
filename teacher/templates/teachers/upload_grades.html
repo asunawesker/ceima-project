@@ -1,174 +1,132 @@
-{% load bootstrap5 %}
+{% extends 'teachers/main.html' %}
+{% load bootstrap_icons %}
 {% load static %}
+{% block content %}
 
-{% bootstrap_css %}
-{% bootstrap_javascript %}
+<br>
 
-<!DOCTYPE html>
-<html lang="en">
+<h3 style="padding-right: 100px; margin-right: 250px">Calificaciones Trimestre 1</h3>
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CEIMA</title>
-</head>
+<div class="col d-flex" style="padding-bottom: 35px">
+    <div class="dropdown" style="margin-right: 100px;">
+        <button class="btn dropdown-toggle dropdown-style" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Materia
+        </button>
+    </div>
+    <div class="dropdown">
+        <button class="btn dropdown-toggle dropdown-style"type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Grupo
+        </button>
+    </div>
+    <div>
+        <button type="button" class="btn btn-save">Guardar</button>
+    </div>
+</div>
 
-<body style="background-color:#F3F3F3">   
-    <nav class="navbar navbar-expand-sm" style="background-color:#79986E">
-        <div class="container-fluid">	    
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <img width="150" style="padding-left: 30px" src="{% static "img/Logo_CEIMA_transparent.png" %}" alt="Logo CEIMA" /> 
-                    </li>
-                </ul>
-            </div>
-                <ul class="d-flex ms-auto order-5" style="list-style: none;">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#" style="color:white; font-size:26px; padding-right: 30px">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#" style="color:white; font-size:26px; padding-right: 30px">Perfil</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Nombre completo</th>
+            <th scope="col">Materia</th>
+            <th scope="col">Grupo</th>
+            <th scope="col">Calificación</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Hector Ballester</td>
+            <td>Matemáticas 1</td>
+            <td>Primero A</td>
+            <td>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Calificación">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Itziar Caceres</td>
+            <td>Matemáticas 2</td>
+            <td>Segundo B</td>
+            <td>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Calificación">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Marian Valdivia</td>
+            <td>Matemáticas 3</td>
+            <td>Tercerto A</td>
+            <td>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Calificación">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Hector Velga</td>
+            <td>Matemáticas 1</td>
+            <td>Primero B</td>
+            <td>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Calificación">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Marc Toledano</td>
+            <td>Matemáticas 2</td>
+            <td>Segundo B</td>
+            <td>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Calificación">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Josefa Maria Salinas</td>
+            <td>Matemáticas 3</td>
+            <td>Tercerto A</td>
+            <td>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Calificación">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Joaquin Piqueras</td>
+            <td>Matemáticas 1</td>
+            <td>Primero B</td>
+            <td>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Calificación">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Yanira Gisbert</td>
+            <td>Matemáticas 2</td>
+            <td>Segundo B</td>
+            <td>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Calificación">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Hicham Sans</td>
+            <td>Matemáticas 3</td>
+            <td>Tercerto A</td>
+            <td>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Calificación">
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div style="position:absolute; right: 70px;">
+    <button type="button" class="btn btn-outline-success">Generar excel</button>
+</div>
 
-
-
-    <div style="padding: 20px 75px;">      
-        <h3 style="padding-right: 100px; margin-right: 250px">Calificaciones Trimestre 1</h3>
-
-        <div class="col d-flex" style="padding-bottom: 35px">
-            <div class="dropdown" style="margin-right: 100px;">
-                <button class="btn dropdown-toggle" style="background-color:#79986E; color: white" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Materia
-                </button>
-            </div>        
-            <div class="dropdown">
-                <button class="btn dropdown-toggle" style="background-color:#79986E; color: white" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Grupo
-                </button>
-            </div>
-            <div>
-                <button type="button" class="btn" style="background-color:#7B36E1; color: white; position:absolute; right: 70px;">Guardar</button>
-            </div>
-        </div>  
-
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Nombre completo</th>
-                    <th scope="col">Materia</th>
-                    <th scope="col">Grupo</th>
-                    <th scope="col">Calificación</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Hector Ballester</td>
-                    <td>Matemáticas 1</td>
-                    <td>Primero A</td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Calificación">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Itziar Caceres</td>
-                    <td>Matemáticas 2</td>
-                    <td>Segundo B</td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Calificación">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Marian Valdivia</td>
-                    <td>Matemáticas 3</td>
-                    <td>Tercerto A</td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Calificación">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Hector Velga</td>
-                    <td>Matemáticas 1</td>
-                    <td>Primero B</td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Calificación">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Marc Toledano</td>
-                    <td>Matemáticas 2</td>
-                    <td>Segundo B</td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Calificación">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Josefa Maria Salinas</td>
-                    <td>Matemáticas 3</td>
-                    <td>Tercerto A</td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Calificación">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Joaquin Piqueras</td>
-                    <td>Matemáticas 1</td>
-                    <td>Primero B</td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Calificación">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Yanira Gisbert</td>
-                    <td>Matemáticas 2</td>
-                    <td>Segundo B</td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Calificación">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Hicham Sans</td>
-                    <td>Matemáticas 3</td>
-                    <td>Tercerto A</td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Calificación">
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div style="position:absolute; right: 70px;">
-            <button type="button" class="btn btn-outline-success">Generar excel</button>
-        </div>   
-    </div> 
-
-
-    <footer class="text-center text-lg-start bg-light text-muted" style="position:absolute; bottom:0; width:100%;">      
-        <div class="text-center p-4" style="background-color: white">
-        © Copyright 2022
-        <p class="text-reset">Cento Educativo México Americano</p>
-        </div>
-    </footer>
-</body>
-</html>
+{% endblock %}
