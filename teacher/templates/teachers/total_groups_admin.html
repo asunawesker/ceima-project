@@ -1,0 +1,59 @@
+{% extends 'teachers/main.html' %}
+{% load bootstrap_icons %}
+{% load static %}
+{% block content %}
+
+<br>
+
+<div style="padding: 20px 75px;">
+    <div class="col d-flex" style="padding-bottom: 35px">
+        <h3>Grupos</h3>
+        <div>
+            <button type="button" class="btn" style="background-color:#7B36E1; color: white; position:absolute; right: 270px;">Eliminar grupo</button>
+        </div>
+        <div>
+            <button type="button" class="btn" style="background-color:#7B36E1; color: white; position:absolute; right: 70px;">Agregar grupo</button>
+        </div>
+    </div>
+</div>
+
+<div class="row d-flex justify-content-center" style="margin-top: 50px">
+    <div class="card column" style="background: #FFFFFF; box-shadow: 30px 13px 54px rgba(0, 0, 0, 0.16); width: 18rem; margin-right: 40px; margin-left: 40px; border-radius: 5px;">
+        <div class="card-body" style="text-align:center;">
+            <a class="card-title text-center stretched-link" style="text-decoration: none; color: black;">Primero A</a>
+        </div>
+    </div>
+    <div class="card column" style="background: #FFFFFF; box-shadow: 30px 13px 54px rgba(0, 0, 0, 0.16); width: 18rem; margin-right: 40px; margin-left: 40px; border-radius: 5px;">
+        <div class="card-body" style="text-align:center;">
+            <a class="card-title text-center stretched-link" style="text-decoration: none; color: black">Primero B</a>
+        </div>
+    </div>
+</div>
+
+<div class="row d-flex justify-content-center" style="margin-top: 100px">
+    <div class="card column" style="background: #FFFFFF; box-shadow: 30px 13px 54px rgba(0, 0, 0, 0.16); width: 18rem; margin-right: 40px; margin-left: 40px; border-radius: 5px;">
+        <div class="card-body" style="text-align:center;">
+            <a class="card-title text-center stretched-link" style="text-decoration: none; color: black;">Segundo A</a>
+        </div>
+    </div>
+    <div class="card column" style="background: #FFFFFF; box-shadow: 30px 13px 54px rgba(0, 0, 0, 0.16); width: 18rem; margin-right: 40px; margin-left: 40px; border-radius: 5px;">
+        <div class="card-body" style="text-align:center;">
+            <a class="card-title text-center stretched-link" style="text-decoration: none; color: black">Segundo B</a>
+        </div>
+    </div>
+</div>
+
+<div class="row d-flex justify-content-center" style="margin-top: 100px">
+    <div class="card column" style="background: #FFFFFF; box-shadow: 30px 13px 54px rgba(0, 0, 0, 0.16); width: 18rem; margin-right: 40px; margin-left: 40px; border-radius: 5px;">
+        <div class="card-body" style="text-align:center;">
+            <a class="card-title text-center stretched-link" style="text-decoration: none; color: black;">Tercero A</a>
+        </div>
+    </div>
+    <div class="card column" style="background: #FFFFFF; box-shadow: 30px 13px 54px rgba(0, 0, 0, 0.16); width: 18rem; margin-right: 40px; margin-left: 40px; border-radius: 5px;">
+        <div class="card-body" style="text-align:center;">
+            <a class="card-title text-center stretched-link" style="text-decoration: none; color: black">Tercero B</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

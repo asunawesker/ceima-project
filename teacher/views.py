@@ -108,3 +108,28 @@ def students_for_group(request, group_id):
 @teacher_only
 def upload_grades(request):
     return render(request, "teachers/upload_grades.html")
+
+@login_required(login_url='index')
+@admin_only
+def total_students_admin(request):
+    return render(request, "teachers/total_students_admin.html")
+
+@login_required(login_url='index')
+@admin_only
+def school_record_admin(request):
+    return render(request, "teachers/school_record_admin.html")
+
+@login_required(login_url='index')
+@admin_only
+def total_groups_admin(request):
+    return render(request, "teachers/total_groups_admin.html")
+
+@login_required(login_url='index')
+@admin_only
+def users_admin(request):
+    return render(request, "teachers/users_admin.html")
+
+@login_required(login_url='index')
+@admin_only
+def subjects_admin(request):
+    return render(request, "teachers/subjects_admin.html")
