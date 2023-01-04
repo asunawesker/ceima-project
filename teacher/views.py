@@ -47,7 +47,7 @@ def homepage(request):
 @login_required(login_url='index')
 @admin_only
 def homepage_admin(request):
-    return render(request, "teachers/homepage_admin.html")
+    return render(request, "teachers/admin/homepage_admin.html")
 
 @login_required(login_url='index')
 @teacher_only
@@ -169,7 +169,7 @@ def total_students_admin(request):
         'subject_filter': students_filter
     }
 
-    return render(request, "teachers/total_students_admin.html", context)
+    return render(request, "teachers/admin/total_students_admin.html", context)
 
 @login_required(login_url='index')
 @admin_only
@@ -180,7 +180,7 @@ def total_groups_admin(request):
         'groups': groups
     }
 
-    return render(request, "teachers/total_groups_admin.html", context)
+    return render(request, "teachers/admin/total_groups_admin.html", context)
 
 @login_required(login_url='index')
 @admin_only
@@ -201,7 +201,7 @@ def users_admin(request):
         'teachers_filter': teachers_filter
     }
 
-    return render(request, "teachers/users_admin.html", context)
+    return render(request, "teachers/admin/users_admin.html", context)
 
 @login_required(login_url='index')
 @admin_only
@@ -217,7 +217,7 @@ def subjects_admin(request):
         'subject_filter': subjects_filter
     }
 
-    return render(request, "teachers/subjects_admin.html", context)
+    return render(request, "teachers/admin/subjects_admin.html", context)
 
 @login_required(login_url='index')
 @admin_only
@@ -244,7 +244,7 @@ def delete_group(request, group_id):
         'groups': groups
     }
 
-    return render(request, "teachers/total_groups_admin.html", context)
+    return render(request, "teachers/admin/total_groups_admin.html", context)
 
 @login_required(login_url='index')
 @admin_only
@@ -293,7 +293,7 @@ def delete_subject(request, subject_id):
         'subject_filter': subjects_filter
     }
 
-    return render(request, "teachers/subjects_admin.html", context)
+    return render(request, "teachers/admin/subjects_admin.html", context)
 
 @login_required(login_url='index')
 @admin_only
