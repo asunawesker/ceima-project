@@ -1,0 +1,58 @@
+{% extends 'teachers/main.html' %}
+{% load bootstrap_icons %}
+{% load static %}
+{% block content %}
+
+<br>
+
+<div style="padding: 20px 75px;">
+    <h3 style="">Administrador de usuarios</h3>
+    <div class="col d-flex" style="padding-bottom: 35px; margin-top:60px; justify-content: space-between">
+        <div>
+            <a type="button" class="btn" style="background-color:#7B36E1; color: white;" href="{% url 'add_user' %}">Agregar</a>
+        </div>
+    </div>
+    <div class="col d-flex" style="padding-bottom: 35px">
+        <form method="get" >
+            <div class="row">
+                <form method="get">
+                    {{ teachers_filter.form.as_p }}
+                    <input  class="btn btn-outline-primary" type="submit" />
+                </form>
+            </div>
+            <br>
+        </form>
+    </div>
+    <table class="table table-hover" style="margin-top: 60px">
+        <thead>
+            <tr>
+                <th scope="col">Nombre completo</th>
+                <th scope="col">Email</th>
+                <th scope="col">Modificar</th>
+                <th scope="col">Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.get_full_name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        <form action="{% url 'update_user' user.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline-primary">Modificar</button>
+                         </form>
+                    </td>
+                    <td>
+                        <form action="{% url 'delete_user' user.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                         </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

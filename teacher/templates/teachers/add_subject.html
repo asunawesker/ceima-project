@@ -1,0 +1,31 @@
+{% extends 'teachers/main.html' %}
+{% load bootstrap_icons %}
+{% load static %}
+{% block content %}
+
+<br>
+
+<div class="col d-flex" style="padding-bottom: 20px">
+    <h3>Registrar nueva materia</h3>
+</div>
+
+<div class="container">
+    <div class="card card-body">
+        <form method="POST" action="">
+            {% csrf_token %}
+            Nombre de la materia
+            {{form.subject}}
+            Nombre del docente
+            {{form.teacher}}
+            Estudiantes
+            {{form.students}}
+
+            <div class="d-flex justify-content-center mt-3 login_container">
+                <input class="btn btn-outline-success" type="submit" value="Agregar materia">
+            </div>
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}

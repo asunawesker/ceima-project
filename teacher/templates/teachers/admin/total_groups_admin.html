@@ -1,0 +1,38 @@
+{% extends 'teachers/main.html' %}
+{% load bootstrap_icons %}
+{% load static %}
+{% block content %}
+
+<br>
+
+<div style="padding: 20px 75px;">
+    <div class="col d-flex" style="padding-bottom: 35px; justify-content: space-between">
+        <h3>Grupos</h3>
+        <div>
+            <a type="button" class="btn" style="background-color:#7B36E1; color: white;"  href="{% url 'add_group' %}">Agregar grupo</a>
+        </div>
+    </div>
+</div>
+
+<div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+    {% if groups %}
+        {% for group in groups %}
+            <div class="card" style="width: 30rem; margin: 5rem; ">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        {{ group.grade }} {{ group.group }}
+                    </h4>
+                    <div style="float:right;">
+                        <form action="{% url 'delete_group' group.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn" style="background-color:#7B36E1; color: white;">Eliminar grupo</button>
+                         </form>
+                    </div>
+
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,5 +1,62 @@
 from django import forms
+from django.forms import ModelForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django import forms
+from .models import StudentsGroup, Subject, Note
 
-class LoginForm(forms.Form):
-   user = forms.CharField(required=False, widget=forms.TextInput(attrs={"class":"form-control", "style": "margin-bottom:20px"}))
-   password = forms.CharField(required=False, widget=forms.PasswordInput(attrs={"class":"form-control" , "style": "margin-bottom:20px"}))
+class CreateUserForm(UserCreationForm):
+	password1 = forms.CharField(
+        label="Contraseña",
+        widget=forms.PasswordInput(attrs={'class':'form-control', 'type':'password', 'placeholder':'Contraseña'})
+    )
+
+	password2 = forms.CharField(
+        label="Contraseña",
+        widget=forms.PasswordInput(attrs={'class':'form-control', 'type':'password', 'placeholder':'Confirmar contraseña'})
+    )
+
+	class Meta:
+		model = User
+		widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Usuario'}),
+            'email': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Correo electrónico'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Nombre'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Apellidos'}),
+        }
+		fields = ['username', 'email', 'first_name', 'last_name']
+
+class UpdateUserForm(UserCreationForm):
+	password1 = forms.CharField(
+        label="Contraseña",
+        widget=forms.PasswordInput(attrs={'class':'form-control', 'type':'password', 'placeholder':'Contraseña'})
+    )
+
+	password2 = forms.CharField(
+        label="Contraseña",
+        widget=forms.PasswordInput(attrs={'class':'form-control', 'type':'password', 'placeholder':'Confirmar contraseña'})
+    )
+
+	class Meta:
+		model = User
+		fields = ['password1', 'password2']
+
+class UpdateNoteForm(UserCreationForm):
+	qualification = forms.IntegerField(
+        label="Contraseña",
+        widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Contraseña'})
+    )
+
+	class Meta:
+		model = Note
+		fields = ['qualification']
+
+class StudentsGroupForm(ModelForm):
+    class Meta:
+        model = StudentsGroup
+        fields = ['grade', 'group']
+
+class SubjectForm(ModelForm):
+    class Meta:
+        model = Subject
+        fields = '__all__'

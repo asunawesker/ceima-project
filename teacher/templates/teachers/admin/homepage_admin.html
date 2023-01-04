@@ -1,0 +1,59 @@
+{% extends 'teachers/main.html' %}
+{% load bootstrap_icons %}
+{% load static %}
+{% block content %}
+
+<br>
+
+<div class="row justify-content-evenly mt-5" >
+    <div class="col-md-3 mb-5">
+        <div class="card column card-menu">
+            <div class="card-body" style="text-align:center;">
+                <h1>
+                    <i class="bi bi-people-fill"></i>
+                </h1>
+                <br>
+                <a class="card-title text-center stretched-link card-menu-text" href="{% url 'total_groups_admin' %}">GRUPOS</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-5">
+        <div class="card column card-menu">
+            <div class="card-body" style="text-align:center;">
+                <h1>
+                    <i class="bi bi-book"></i>
+                </h1>
+                <br>
+                <a class="card-title text-center stretched-link card-menu-text" href="{% url 'subjects_admin' %}">MATERIAS</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row justify-content-evenly mt-5" >
+    <div class="col-md-3 mb-5">
+        <div class="card column card-menu">
+            <div class="card-body" style="text-align:center;">
+                <h1>
+                    <i class="bi bi-person-bounding-box"></i>
+                </h1>
+                <br>
+                <a class="card-title text-center stretched-link card-menu-text" href="{% url 'total_students_admin' %}">ALUMNOS</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-5">
+        <div class="card column card-menu">
+            <div class="card-body" style="text-align:center;">
+                <h1>
+                    <i class="bi bi-person-badge"></i>
+                </h1>
+                <br>
+                <a class="card-title text-center stretched-link card-menu-text" href="{% url 'users_admin' %}">USUARIOS</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

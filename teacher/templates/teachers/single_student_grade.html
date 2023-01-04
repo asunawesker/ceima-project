@@ -1,0 +1,40 @@
+{% extends 'teachers/main.html' %}
+{% load bootstrap_icons %}
+{% load static %}
+{% block content %}
+
+<br>
+
+<div style="padding-bottom: 35px">
+    <p><b>Nombre completo: </b>{{ student.fullname }}</p>
+    <p><b>Grado: </b> {{ student.group.grade }}</p>
+    <p><b>Grupo: </b> {{ student.group.group }}</p>
+</div>
+
+<div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Materia</th>
+                <th scope="col">Calificación</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for note in notes %}
+                <tr>
+                    <td>{{ note.subject.subject }}</td>
+                    <td>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Calificación" value={{ note.qualification }}>
+                          </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div>
+        <a type="button" class="btn" style="background-color:#7B36E1; color: white;"  href="{% url 'upload_grades' %}">Guardar</a>
+    </div>
+</div>
+
+{% endblock %}

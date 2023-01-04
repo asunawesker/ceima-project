@@ -1,0 +1,28 @@
+{% extends 'teachers/main.html' %}
+{% load bootstrap_icons %}
+{% load static %}
+{% block content %}
+
+<br>
+
+<div class="col d-flex" style="padding-bottom: 20px">
+    <h3>Registrar nuevo grupo</h3>
+</div>
+
+<div class="container">
+    <div class="card card-body">
+        <form action="" method="post" novalidate>
+            {% csrf_token %}
+            Grado
+            {{form.grade}}
+            Grupo
+            {{form.group}}
+            <div class="d-flex justify-content-center mt-3 login_container">
+                <input class="btn btn-outline-success" type="submit" value="Agregar grupo">
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
